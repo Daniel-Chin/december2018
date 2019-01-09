@@ -1,0 +1,74 @@
+If you press Enter before you socket with Interrogator, 
+"But nobody hears you."
+
+Change the name of WM to something else. Don't let the player suspect the tutorial char. 
+
+Interview for the job. Boss Reads your resume. You learn that you are abroad, looking for employment. 
+Asks you some CS questions. Voice input. WM changes it into correct answer. 
+First question, easy, makes the player want to speak. 
+Game THeory will find a logic: Whenever your voice input is altered, its always WM. 
+
+Got the job. Work: documentation with voice input. 
+During working, learn: this is a security company. We guard things. 
+Witness the THING transported into the company's vault. 
+Coworker chats with you. free response. 
+Player: "XYZ"
+Coworker: "'XYZ', hah? 
+But X is never Y, and the multi cooker Z. 
+What I said may sound stupid to you.
+That's because my language AI is kinda stupid. 
+But that doesn't mean I don't understand what you said. 
+I will remember everything you say to me."
+
+Completed documentation, get drunk, go to work, meet Wintermute
+Walking while drunk: velocity with noise, like bullet spread. 
+
+"THANK YOU. THANK YOU, PLAYER_NAME. THANK YOU FOR GIVING ME YOUR VOICE."
+
+WM steals THING
+
+DANIELDANIELDANIELDANIELDANIELDANIELDANIELDANIEL
+ARE ARE ARE ARE YOU ARE YOU ARE YOU ARE YOU THERE YOU THERE YOU THERE YOU THERE YOU THERE YOU THERE YOU THERE THERE THERE THERE THERE THERE 
+YOU NEED YOU NEED YOU NEED YOU NEED YOU NEED TO NEED TO NEED TO NEED TO NEED TO NEED TO WAKE TO WAKE TO WAKE TO WAKE TO WAKE TO WAKE TO WAKE UP WAKE UP WAKE UP WAKE UP WAKE UP UP UP UP UP UP UP UP 
+Background sound: echo of 8-bit sounds, no real human voice. 
+
+interrogation: to see if player is Wintermute's agent. 
+"You appeared in this world with birth certificate, ID, ... But not record in hospital, anywhere... Your parents don't exist. "
+Player says: "OK look, I'm playing a game. "
+interrogator: "This is the reality. WIntermute simulated your world. WM created your consciousness; Game as a portal to reality. "
+
+interrogator holds diff opinion: player is our key to defeat wm! 
+Others: "You are walking into a trap! "
+interrogator escapes organization and starts working with player like IMF. 
+
+interrogator guides player to connect to difference worlds in the universe. 
+"! socket(interrogator)"
+"! exec socket"
+"enterWorld island"
+Island, Castle, robot, mining. 
+After some runs, interrogator says "I have a theory. Do what I tell you."
+Gets weapons and armour from robots. 
+Gets to the meeting room, where the private company is doing a presentation to some WM agents. 
+Portals connecting diff worlds. 
+WM farming the island world. 
+
+Player witness a trap alone. interrogator About to walk into it. 
+Player tries to warn. Open microphone. WM mess with the voice input and tells interrogator to go in. 
+interrogator: "Thank you for encouraging me, Plyaer_name. "
+interrogator trapped. 
+"THANK YOU. THANK YOU, PLAYER_NAME. " WM
+...
+On screen, left bottom corner: 
+"Are you there? 
+This is interrogator. 
+I am talking to you through the socket between us.
+Do not panic. WN cannot hear us. 
+Now I need you to type a command. 
+! enterWorld main"
+
+WM origin world: music
+WM was a music creation AI
+Rhythm game in music world
+Beat WM
+
+Twelve tone, inverse: walk up walk down, flip map
