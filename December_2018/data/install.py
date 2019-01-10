@@ -1,9 +1,5 @@
-from game_state import *
+from .game_state import *
 from time import sleep
-
-STAGES = [
-    greet, 
-]
 
 def main():
     while gameState['install']['stage'] != len(STAGES):
@@ -15,9 +11,9 @@ def main():
 
 def greet():
     typeWrite('Thank you. ')
-    sleep(1)
+    sleep(2)
     typeWrite('Thank you for starting', end = ' ')
-    sleep(0.5)
+    sleep(1)
     typeWrite('to play this game. ')
 
 def typeWrite(text, interval = 0.1, end = '\n'):
@@ -25,3 +21,7 @@ def typeWrite(text, interval = 0.1, end = '\n'):
         print(char, end = '', flush = True)
         sleep(interval)
     print('', end = end, flush = True)
+
+STAGES = [
+    greet, 
+]

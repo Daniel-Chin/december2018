@@ -4,9 +4,9 @@ import os
 from os import path
 
 if __name__ == '__main__':
-    os.chdir(path.dirname(__file__))
+    os.chdir(path.dirname(path.abspath(__file__)))
     os.chdir('data')
-    from main import main
+    from data.main import main
     main()
     sys.exit(0)
 else:
