@@ -13,8 +13,12 @@ else:
 def main():
     if gameState['install']['stage'] > 2:
         typeWrite('* Welcome back. \n  We shall continue. '.upper())
+    for i in range(gameState['install']['stage']):
+        todo = STAGES[i][1]
+        if todo is not None:
+            todo()
     while gameState['install']['stage'] != len(STAGES):
-        STAGES[gameState['install']['stage']]()
+        STAGES[gameState['install']['stage']][0]()
         gameState['install']['stage'] += 1
         saveState()
     gameState['install']['stage'] = -1
@@ -60,12 +64,15 @@ def getPip():
     terminal(python_name + ' ../December_2018.py')
     sys.exit(0)
 
-def verifyPip():
+def importPip():
     global pip
+    import pip
+    if not hasattr(pip, 'main'):
+        import pip._internal as pip
+
+def verifyPip():
     try:
-        import pip
-        if not hasattr(pip, 'main'):
-            import pip._internal as pip
+        importPip()
     except:
         print('Fatal Error: Failed to install pip! ')
         input('Press Enter to exit game. ')
@@ -75,7 +82,7 @@ def verifyPip():
     typeWrite('* Good job. '.upper())
 
 def pipInstall(*packages):
-    pip.main(['install'] + packages + ['--user'])
+    pip.main(['install'] + list(packages) + ['--user'])
 
 def typeWrite(*args, interval = 0.1, end = '\n', sep = ' '):
     for char in sep.join(args):
@@ -86,8 +93,12 @@ def typeWrite(*args, interval = 0.1, end = '\n', sep = ' '):
 def commandPreview(*packages):
     return '%spip install %s --user' % (prompt, ' '.join(packages))
 
+def importColor():
+    global Fore, Back, Style
+    from colorama import Fore, Back, Style, init
+    init()
+
 def getColor():
-    global colorama
     typeWrite('* Next, colors. '.upper())
     sleep(1)
     typeWrite('* I WILL RUN "%s". ' % commandPreview('colorama'))
@@ -96,16 +107,15 @@ def getColor():
     if getConsent():
         print(commandPreview('colorama'))
         pipInstall('colorama')
-        import colorama
-        from colorama import Fore, Back, Style
-        colorama.init()
-        print(Fore.RED, Back.WHITE, Style.DIM)
+        importColor()
+        print()
+        print(Fore.RED, Back.WHITE, Style.DIM, end = '')
         typeWrite('* Great. '.upper(), end = '')
         print(Style.RESET_ALL)
     else:
         typeWrite('* I am sure '.upper(), end = '')
         sleep(0.6)
-        typeWrite(' you will come back again. '.upper())
+        typeWrite('you will come back again. '.upper())
         sys.exit(0)
 
 def getConsent():
@@ -115,7 +125,8 @@ def getConsent():
     return op == 'y'
 
 STAGES = [
-    greet, 
-    getPip, 
-    verifyPip, 
+    (greet, None), 
+    (getPip, None), 
+    (verifyPip, importPip),
+    (getColor, importColor), 
 ]
