@@ -1,17 +1,12 @@
-'''
-'''
-import os
-from os import path
-os.chdir(path.dirname(__file__))
-os.chdir('data')
-import game_state
 import sys
 from time import sleep
-
-def main():
-    ...
+import os
+from os import path
 
 if __name__ == '__main__':
+    os.chdir(path.dirname(__file__))
+    os.chdir('data')
+    from main import main
     main()
     sys.exit(0)
 else:

@@ -1,13 +1,19 @@
+__all__ = ['gameState', 'saveState']
+
 import pickle
 import sys
 from io import BytesIO
 
-INIT_STATE = {}
+INIT_STATE = {
+    install: {
+        stage: 0,   # -1 for finish
+    }, 
+}
 
-state = {}
+gameState = {}
 
-def load():
-    global state
+def loadState():
+    global gameState
     try:
         with open('file0', 'rb') as f0:
             with open('file1', 'rb') as f1:
@@ -18,15 +24,15 @@ def load():
                         if which not in (0, 1):
                             which = None
                             raise IndexError
-                        state = pickle.load((f0, f1)[which])
+                        gameState = pickle.load((f0, f1)[which])
                         copy(f0, f1, which)
                     except IndexError:
                         try:
-                            state = pickle.load(f0)
+                            gameState = pickle.load(f0)
                             which = 0
                         except:
                             try:
-                                state = pickle.load(f1)
+                                gameState = pickle.load(f1)
                                 which = 1
                             except:
                                 print('Game save file corrupted - which is unbelievable, because Daniel wrote an entire python script dedicated to prevent this from happening. Contact Daniel, and tell him what heppened. Please. ')
@@ -45,12 +51,12 @@ def load():
             badFile.write(data)
             badFile.close()
     except FileNotFoundError:
-        state = INIT_STATE
-        save()
+        gameState = INIT_STATE
+        saveState()
 
-def save():
+def saveState():
     io = BytesIO()
-    pickle.dump(state, io)
+    pickle.dump(gameState, io)
     data = io.read()
     io.close()
     with open('file9', 'wb+') as f:
@@ -62,4 +68,4 @@ def save():
     with open('file1', 'wb+') as f:
         f.write(data)
 
-load()
+loadState()
