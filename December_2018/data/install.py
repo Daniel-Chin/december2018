@@ -136,34 +136,34 @@ def getColor():
     typeWrite('* I WILL RUN "%s". ' % commandPreview('colorama'))
     sleep(1)
     typeWrite('* Do you give consent? '.upper())
-    if getConsent():
-        print(commandPreview('colorama'))
-        pipInstall('colorama')
-        importColor()
-        print('Testing all colors... ')
-        all_colors = [x for x in dir(Back) if x[0] != '_']
-        for color in all_colors:
-            print(Fore.RESET, ' ', Back.__getattribute__(color), color, end = '', flush = True, sep = '')
-            sleep(0.1)
-            print(Back.RESET, ' ', Fore.__getattribute__(color), color, end = '', flush = True, sep = '')
-            sleep(0.1)
-        print(Style.RESET_ALL)
-        print('Testing success! ')
-        print()
-        print('*', Back.RED + Fore.WHITE, end = '')
-        typeWrite('Great. '.upper(), end = '')
-        print(Style.RESET_ALL)
-    else:
-        typeWrite('* I am sure '.upper(), end = '')
-        sleep(0.6)
-        typeWrite('you will come back again. '.upper())
-        sys.exit(0)
+    getConsent()
+    print(commandPreview('colorama'))
+    pipInstall('colorama')
+    importColor()
+    print('Testing all colors... ')
+    all_colors = [x for x in dir(Back) if x[0] != '_']
+    for color in all_colors:
+        print(Fore.RESET, ' ', Back.__getattribute__(color), color, end = '', flush = True, sep = '')
+        sleep(0.1)
+        print(Back.RESET, ' ', Fore.__getattribute__(color), color, end = '', flush = True, sep = '')
+        sleep(0.1)
+    print(Style.RESET_ALL)
+    print('Testing success! ')
+    print()
+    print('*', Back.RED + Fore.WHITE, end = '')
+    typeWrite('Great. '.upper(), end = '')
+    print(Style.RESET_ALL)
 
 def getConsent():
     op = input('y/n: ').lower()
     while op not in ('y', 'n'):
         op = input('Please type either "y" or "n" and press Enter: ').lower()
-    return op == 'y'
+    if op != 'y':
+        typeWrite('* I am sure '.upper(), end = '')
+        sleep(0.6)
+        typeWrite('you will come back again. '.upper())
+        sleep(1)
+        sys.exit(0)
 
 def welcomeBack():
     typeWrite('* Welcome back. \n  We shall continue. '.upper())
