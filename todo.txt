@@ -1,0 +1,2 @@
+check inet access
+tell player about deep laerning
