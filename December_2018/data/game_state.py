@@ -5,8 +5,8 @@ import sys
 from io import BytesIO
 
 INIT_STATE = {
-    install: {
-        stage: 0,   # -1 for finish
+    'install': {
+        'stage': 0,   # -1 for finish
     }, 
 }
 
