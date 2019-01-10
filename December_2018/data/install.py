@@ -4,25 +4,57 @@ from subprocess import Popen
 import sys
 import platform
 from os import system as terminal
+from .terminalsize import get_terminal_size
 
 if platform.system() == 'Windows':
     prompt = '> '
+    cls = 'cls'
 else:
     prompt = '$ '
+    cls = 'clear'
 
 def main():
-    if gameState['install']['stage'] > 2:
-        typeWrite('* Welcome back. \n  We shall continue. '.upper())
     for i in range(gameState['install']['stage']):
-        todo = STAGES[i][1]
-        if todo is not None:
-            todo()
+        STAGES[i][1]()
     while gameState['install']['stage'] != len(STAGES):
         STAGES[gameState['install']['stage']][0]()
         gameState['install']['stage'] += 1
         saveState()
     gameState['install']['stage'] = -1
     saveState()
+
+def warnAI():
+    width, height = get_terminal_size()
+    warn_text = '''
+-= Warning =-
+
+The NPCs in this game are sentient AIs.
+They have emotions, goals, and intentions.
+They remember what you say.
+|
+Maybe you think they are stupid;
+But that doesn't mean
+they don't hear you. 
+|
+Play carefully.
+|
+Press ENTER to continue...'''
+    lines = warn_text.split('\n')
+    vertical_pad = int((height - len(lines)) / 2)
+    print('\n' * (vertical_pad - 1))
+    [printCenter(width, x) for x in lines]
+    print('\n' * (vertical_pad - 1))
+    input()
+    terminal(cls)
+
+def printCenter(terminal_width, text, and_sleep = 2):
+    length = len(text)
+    left_pad = int((terminal_width - length) / 2)
+    left_pad = max(left_pad, 0)
+    print(' ' * left_pad, end = '')
+    print(text)
+    if text != '' and '...' not in text: 
+        sleep(and_sleep)
 
 def greet():
     typeWrite('* Thank you. '.upper())
@@ -49,7 +81,7 @@ def getPip():
             Popen([python_name, '-V'], stdout = open('temp', 'w+'))
         except FileNotFoundError:
             print('Fatal Error: cannot call python from terminal. Add python to path, please! ')
-            input('Press Enter to exit game. ')
+            input('Press Enter to exit game... ')
             sys.exit(7482)
     desired = python_name + ' get-pip.py --user'
     op = ''
@@ -75,7 +107,7 @@ def verifyPip():
         importPip()
     except:
         print('Fatal Error: Failed to install pip! ')
-        input('Press Enter to exit game. ')
+        input('Press Enter to exit game... ')
         import pip
         sys.exit(4685)
     print()
@@ -109,7 +141,7 @@ def getColor():
         pipInstall('colorama')
         importColor()
         print()
-        print(Fore.RED, Back.WHITE, Style.DIM, end = '')
+        print(Fore.RED, Back.WHITE, end = '')
         typeWrite('* Great. '.upper(), end = '')
         print(Style.RESET_ALL)
     else:
@@ -124,9 +156,17 @@ def getConsent():
         op = input('Please type either "y" or "n" and press Enter: ').lower()
     return op == 'y'
 
+def welcomeBack():
+    typeWrite('* Welcome back. \n  We shall continue. '.upper())
+
+def nop():
+    pass
+
 STAGES = [
-    (greet, None), 
-    (getPip, None), 
+    (warnAI, nop), 
+    (greet, nop), 
+    (getPip, nop), 
     (verifyPip, importPip),
+    (nop, welcomeBack), 
     (getColor, importColor), 
 ]
