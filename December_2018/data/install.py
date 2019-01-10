@@ -140,9 +140,18 @@ def getColor():
         print(commandPreview('colorama'))
         pipInstall('colorama')
         importColor()
+        print('Testing all colors... ')
+        all_colors = [x for x in dir(Back) if x[0] != '_']
+        for color in all_colors:
+            print(Fore.RESET, ' ', Back.__getattribute__(color), color, end = '', flush = True, sep = '')
+            sleep(0.1)
+            print(Back.RESET, ' ', Fore.__getattribute__(color), color, end = '', flush = True, sep = '')
+            sleep(0.1)
+        print(Style.RESET_ALL)
+        print('Testing success! ')
         print()
-        print(Fore.RED, Back.WHITE, end = '')
-        typeWrite('* Great. '.upper(), end = '')
+        print('*', Back.RED + Fore.WHITE, end = '')
+        typeWrite('Great. '.upper(), end = '')
         print(Style.RESET_ALL)
     else:
         typeWrite('* I am sure '.upper(), end = '')
