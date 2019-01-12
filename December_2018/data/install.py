@@ -136,7 +136,7 @@ def importColor():
     init()
 
 def getColor():
-    typeWrite('* Next, colors. Shall we get some colors in the terminal? ')
+    typeWrite('* Next, colors. Shall we add some colors to the terminal? ')
     sleep(1)
     typeWrite('* I will run "%s". ' % commandPreview('colorama'))
     sleep(1)

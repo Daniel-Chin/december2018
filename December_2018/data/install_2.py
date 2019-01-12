@@ -3,3 +3,6 @@ import pip
 if not hasattr(pip, 'main'):
     import pip._internal as pip
 import cocos
+
+def main():
+    ...
