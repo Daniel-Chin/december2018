@@ -31,13 +31,13 @@ def warnAI():
 The NPCs in this game are sentient AIs.
 They have emotions, goals, and intentions.
 They remember what you say.
-|
+<br>
 Maybe you think they are stupid;
 But that doesn't mean
 they don't hear you. 
-|
+<br>
 Play carefully.
-|
+<br>
 Press ENTER to continue...'''
     lines = warn_text.split('\n')
     vertical_pad = int((height - len(lines)) / 2)
@@ -48,11 +48,14 @@ Press ENTER to continue...'''
     terminal(cls)
 
 def printCenter(terminal_width, text, and_sleep = 2):
-    length = len(text)
-    left_pad = int((terminal_width - length) / 2)
-    left_pad = max(left_pad, 0)
-    print(' ' * left_pad, end = '')
-    print(text)
+    if text == '<br>':
+        print()
+    else:
+        length = len(text)
+        left_pad = int((terminal_width - length) / 2)
+        left_pad = max(left_pad, 0)
+        print(' ' * left_pad, end = '')
+        print(text)
     if text != '' and '...' not in text: 
         sleep(and_sleep)
 
@@ -89,7 +92,7 @@ def getPip():
         typeWrite('* Would you kindly type "%s" and press ENTER, please? ' % desired)
         op = input(prompt)
     popen = Popen(op.split(' '))
-    typeWrite('* Now wait...')
+    typeWrite('* Thank you! Now wait for it...')
     popen.wait()
     gameState['install']['stage'] += 1
     saveState()
@@ -112,6 +115,8 @@ def verifyPip():
         sys.exit(4685)
     print()
     typeWrite('* Good job! I can sense that pip is fully operational. ')
+    sleep(1)
+    print()
 
 def pipInstall(*packages):
     pip.main(['install'] + list(packages) + ['--user'])
@@ -148,11 +153,22 @@ def getColor():
         print(Back.RESET, ' ', Fore.__getattribute__(color), color, end = '', flush = True, sep = '')
         sleep(0.1)
     print(Style.RESET_ALL)
-    print('Testing success! ')
+    print('Testing success')
     print()
-    print('*', Back.RED + Fore.WHITE, end = '')
-    typeWrite('Great. ', end = '')
-    print(Style.RESET_ALL)
+    print('*', Back.LIGHTCYAN_EX + Fore.BLACK + Style.DIM, end = '')
+    typeWrite('Great!', end = '')
+    print(Style.RESET_ALL, end = ' ')
+    sleep(1)
+    typeWrite('Look at all the ', end = '')
+    show_off = [Back.RED, Back.LIGHTRED_EX, Back.YELLOW, Back.GREEN, Back.BLUE, Back.MAGENTA]
+    print(Fore.WHITE, end = '')
+    for char, color in zip('colors', show_off):
+        print(color, end = '')
+        typeWrite(char, end = '')
+    print(Style.RESET_ALL, end = '')
+    typeWrite(' I can use! ')
+    sleep(1)
+    print()
 
 def getConsent():
     op = input('y/n: ').lower()
@@ -169,12 +185,16 @@ def getConsent():
 
 def welcomeBack():
     typeWrite('* Welcome back! \n  We shall continue. ')
+    sleep(1)
 
 def nop():
     pass
 
 def getCocos():
-    
+    typeWrite('Alright. ')
+
+def importCocos():
+    pass
 
 STAGES = [
     (warnAI, nop), 
