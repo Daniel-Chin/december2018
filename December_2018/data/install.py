@@ -140,7 +140,6 @@ def getColor():
     sleep(1)
     typeWrite('* I will run "%s". ' % commandPreview('colorama'))
     sleep(1)
-    typeWrite('* Do you give consent? ')
     getConsent()
     print(commandPreview('colorama'))
     pipInstall('colorama')
@@ -153,7 +152,7 @@ def getColor():
         print(Back.RESET, ' ', Fore.__getattribute__(color), color, end = '', flush = True, sep = '')
         sleep(0.1)
     print(Style.RESET_ALL)
-    print('Testing success')
+    print('Testing success. ')
     print()
     print('*', Back.LIGHTCYAN_EX + Fore.BLACK + Style.DIM, end = '')
     typeWrite('Great!', end = '')
@@ -171,6 +170,7 @@ def getColor():
     print()
 
 def getConsent():
+    typeWrite('* Do you give consent? ')
     op = input('y/n: ').lower()
     while op not in ('y', 'n'):
         op = input('Please type either "y" or "n" and press Enter: ').lower()
@@ -191,10 +191,27 @@ def nop():
     pass
 
 def getCocos():
-    typeWrite('Alright. ')
+    typeWrite('* Alright. ')
+    sleep(1)
+    typeWrite('* You must be tired of this ugly terminal already. ')
+    sleep(1)
+    typeWrite('* Frankly speaking, me too! ')
+    sleep(1)
+    typeWrite("* Why don't we install the main game engine")
+    typeWrite('  so that we can have a proper graphical window? ')
+    sleep(1)
+    typeWrite('* I will run ', end = '')
+    print(Back.BLACK + Fore.GREEN, end = '')
+    typeWrite(commandPreview('cocos2d'), end = '')
+    print(Style.RESET_ALL + '. ')
+    sleep(1)
+    getConsent()
+    print(commandPreview('cocos2d'))
+    pipInstall('cocos2d')
+    importCocos()
 
 def importCocos():
-    pass
+    import cocos
 
 STAGES = [
     (warnAI, nop), 

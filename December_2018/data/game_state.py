@@ -7,6 +7,7 @@ from io import BytesIO
 INIT_STATE = {
     'install': {
         'stage': 0,   # -1 for finish
+        '2_stage': 0, # -1 for finish
     }, 
 }
 
