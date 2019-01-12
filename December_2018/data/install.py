@@ -57,20 +57,20 @@ def printCenter(terminal_width, text, and_sleep = 2):
         sleep(and_sleep)
 
 def greet():
-    typeWrite('* Thank you. '.upper())
+    typeWrite('* Hi there! ')
     sleep(1.5)
-    typeWrite('* Thank you for starting'.upper(), end = ' ')
+    typeWrite('* Thank you for starting', end = ' ')
     sleep(1)
-    typeWrite('to play this game. '.upper())
+    typeWrite('to play this game. ')
     sleep(1)
     print()
-    typeWrite('* This game needs some dependencies. '.upper())
+    typeWrite('* This game needs some dependencies. ')
     sleep(1)
-    typeWrite('* Let us install them one by one. '.upper())
+    typeWrite('* Let us install them one by one! ')
     sleep(1)
 
 def getPip():
-    typeWrite('* First of all, we need pip. '.upper())
+    typeWrite('* First of all, we need pip. ')
     sleep(1)
     try:
         python_name = 'python3'
@@ -86,10 +86,10 @@ def getPip():
     desired = python_name + ' get-pip.py --user'
     op = ''
     while op != desired:
-        typeWrite('* PLEASE TYPE "%s" AND PRESS ENTER. ' % desired)
+        typeWrite('* Would you kindly type "%s" and press ENTER, please? ' % desired)
         op = input(prompt)
     popen = Popen(op.split(' '))
-    typeWrite('* Now wait...'.upper())
+    typeWrite('* Now wait...')
     popen.wait()
     gameState['install']['stage'] += 1
     saveState()
@@ -111,12 +111,12 @@ def verifyPip():
         import pip
         sys.exit(4685)
     print()
-    typeWrite('* Good job. '.upper())
+    typeWrite('* Good job! I can sense that pip is fully operational. ')
 
 def pipInstall(*packages):
     pip.main(['install'] + list(packages) + ['--user'])
 
-def typeWrite(*args, interval = 0.1, end = '\n', sep = ' '):
+def typeWrite(*args, interval = 0.05, end = '\n', sep = ' '):
     for char in sep.join(args):
         print(char, end = '', flush = True)
         sleep(interval)
@@ -131,11 +131,11 @@ def importColor():
     init()
 
 def getColor():
-    typeWrite('* Next, colors. '.upper())
+    typeWrite('* Next, colors. Shall we get some colors in the terminal? ')
     sleep(1)
-    typeWrite('* I WILL RUN "%s". ' % commandPreview('colorama'))
+    typeWrite('* I will run "%s". ' % commandPreview('colorama'))
     sleep(1)
-    typeWrite('* Do you give consent? '.upper())
+    typeWrite('* Do you give consent? ')
     getConsent()
     print(commandPreview('colorama'))
     pipInstall('colorama')
@@ -151,25 +151,30 @@ def getColor():
     print('Testing success! ')
     print()
     print('*', Back.RED + Fore.WHITE, end = '')
-    typeWrite('Great. '.upper(), end = '')
+    typeWrite('Great. ', end = '')
     print(Style.RESET_ALL)
 
 def getConsent():
     op = input('y/n: ').lower()
     while op not in ('y', 'n'):
         op = input('Please type either "y" or "n" and press Enter: ').lower()
-    if op != 'y':
-        typeWrite('* I am sure '.upper(), end = '')
+    if op == 'y':
+        typeWrite('* Okay! ')
+    else:
+        typeWrite('* I am sure ', end = '')
         sleep(0.6)
-        typeWrite('you will come back again. '.upper())
+        typeWrite('you will come back again. ')
         sleep(1)
         sys.exit(0)
 
 def welcomeBack():
-    typeWrite('* Welcome back. \n  We shall continue. '.upper())
+    typeWrite('* Welcome back! \n  We shall continue. ')
 
 def nop():
     pass
+
+def getCocos():
+    
 
 STAGES = [
     (warnAI, nop), 
@@ -178,4 +183,5 @@ STAGES = [
     (verifyPip, importPip),
     (nop, welcomeBack), 
     (getColor, importColor), 
+    (getCocos, importCocos), 
 ]
