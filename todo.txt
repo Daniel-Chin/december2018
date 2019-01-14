@@ -1,2 +1,1 @@
-check inet access
-tell player about deep laerning
+validate the dict loaded from save file
