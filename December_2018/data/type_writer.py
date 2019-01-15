@@ -2,6 +2,9 @@ from cocos.text import HTMLLabel
 from cocos.audio.SDL.timer import SDL_AddTimer as addTimer
 from io import StringIO
 
+def f(interval, param):
+    return 0
+    
 class TypeWriter:
     def __init__(self, parent, interval = 50):
         self.parent = parent
@@ -32,10 +35,10 @@ class TypeWriter:
             else:
                 self.goal_list.append(char)
         interval = interval or self.interval
-        addTimer(interval, self.onTimer, None)
+        addTimer(interval, f, ['no'])
     
-    def onTimer(self, *args):
-        ...
+    def onTimer(self, interval, param):
+        return 0
     
     def readOneCharAndTags(self):
         ...
