@@ -1,5 +1,5 @@
 import cocos
-cocos.director.director.init()
+cocos.director.director.init(fullscreen = False)
 from timer import setTimer
 
 class Root(cocos.layer.Layer):

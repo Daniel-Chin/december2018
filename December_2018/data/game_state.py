@@ -3,6 +3,7 @@ __all__ = ['gameState', 'saveState']
 import pickle
 import sys
 from io import BytesIO
+from .python_lib.dict_shape import dictShapeCompare
 
 INIT_STATE = {
     'install': {
@@ -12,6 +13,9 @@ INIT_STATE = {
 }
 
 gameState = {}
+
+class GameStateDictShapeIncorrect(Exception):
+    '''The shape of the loaded gameState != INIT_STATE. '''
 
 def loadState():
     global gameState
@@ -26,14 +30,17 @@ def loadState():
                             which = None
                             raise IndexError
                         gameState = pickle.load((f0, f1)[which])
-                except IndexError:
+                        assertDictShape()
+                except (IndexError, GameStateDictShapeIncorrect):
                     print('file9 corrupted. Rare! ')
                     try:
                         gameState = pickle.load(f0)
+                        assertDictShape()
                         which = 0
                     except:
                         try:
                             gameState = pickle.load(f1)
+                            assertDictShape()
                             which = 1
                         except:
                             print('Game save file corrupted - which is unbelievable, because Daniel wrote an entire python script dedicated to prevent this from happening. Contact Daniel, and tell him what heppened. Please. ')
@@ -55,7 +62,12 @@ def loadState():
         gameState = INIT_STATE
         saveState()
 
+def assertDictShape():
+    if not dictShapeCompare(INIT_STATE, gameState):
+        raise GameStateDictShapeIncorrect
+
 def saveState():
+    assertDictShape()
     io = BytesIO()
     pickle.dump(gameState, io)
     io.seek(0)
