@@ -5,43 +5,42 @@ from cocos.actions import Delay
 from cocos.director import director
 from cocos.cocosnode import CocosNode
 
-wrapperNode = None
+wrapperNode = CocosNode()
 currentScene = None
 directorSceneStack = []
 
 def setTimer(callback, delay, *args, **kw):
     wrapperNode.do(
         Delay(delay) + 
-        CallFunc(callbackCaller, callback, *args, **kw)
+        CallFunc(callbackCaller, callback, delay, *args, **kw)
     )
 
-def callbackCaller(callback, *args, **kw):
-    new_delay = callback(*args, **kw)
+def callbackCaller(callback, delay, *args, **kw):
+    new_delay = callback(delay, *args, **kw)
     if new_delay != 0:
         setTimer(callback, new_delay, *args, **kw)
 
 def onNewScene(newScene):
-    global wrapperNode, currentScene
+    global currentScene
     if currentScene:
         currentScene.remove(wrapperNode)
-    wrapperNode = CocosNode()
     newScene.add(wrapperNode)
     currentScene = newScene
 
-def onPush(self, scene):
+def onPush(scene):
     directorSceneStack.append(currentScene)
     onNewScene(scene)
 
-def onPop(self):
+def onPop():
     onNewScene(directorSceneStack.pop(-1))
 
-def run(self, scene):
+def run(scene):
     onNewScene(scene)
-    saved_run(self, scene)
+    saved_run(scene)
 
 def replace(scene):
     onNewScene(scene)
-    saved_replace(self, scene)
+    saved_replace(scene)
 
 director.on_push = onPush
 director.on_pop = onPop
