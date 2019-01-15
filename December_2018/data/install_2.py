@@ -3,9 +3,9 @@ import pip
 if not hasattr(pip, 'main'):
     import pip._internal as pip
 import cocos
+cocos.director.director.init()
 
 def main():
-    cocos.director.director.init()
     root = Root()
     cocos.director.director.run(cocos.scene.Scene(root))
 
