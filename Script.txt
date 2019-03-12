@@ -20,6 +20,13 @@ That's because my language AI is kinda stupid.
 But that doesn't mean I don't understand what you said. 
 I will remember everything you say to me."
 
+encounter a Hacker's Github repo. Read readme? y/n
+if n: boss bump into door, "Í»»÷¼ì²é" "importent to read every readme you see. A, did you skip any readme today? B? C?"
+"Well, make sure you read the readme."
+readme sayd funny things. Ends with: "My repo doesn't have any issues yet... Cooler repos have tons of them. They are so cool. If only I had some..."
+Open an issue? y/n
+[mentionable by late game]
+
 Completed documentation, get drunk, go to work, meet Wintermute
 Walking while drunk: velocity with noise, like bullet spread. 
 
