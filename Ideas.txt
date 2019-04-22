@@ -1,5 +1,5 @@
 At one time, WM controls the random number generator. 
-A no-ssolution version of Deltarune Boxer attack...
+A no-solution version of Deltarune Boxer attack...
 WM is a GAN. Musician uploaded conciousness as the discriminator
 Propelling force preventing the mouse from approaching a button
 Rhythm level: "DNA replication - leading strand" "DNA replication - lagging strand". Lagging strand is like, you type as the DNAP III does the job. Nucleotides drop down indicating the anticipated time. Longer notes are the same nucleotides grouped together. 
@@ -9,3 +9,4 @@ Polyphonic composition.
 https://youtu.be/yZyn2FDvvy0 variations on a Korean folk song: ending part, boss attack quickly, player summons melee / other attacker with slow wind notes. 
 Use tranlsation API twice to paraphrase user input. Fake AI. 
 7 beats per measure: nipaiyiwopaiyi
+A computer in game that can launch the game recursively. Tail-return-optimization? 
