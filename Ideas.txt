@@ -10,3 +10,6 @@ https://youtu.be/yZyn2FDvvy0 variations on a Korean folk song: ending part, boss
 Use tranlsation API twice to paraphrase user input. Fake AI. 
 7 beats per measure: nipaiyiwopaiyi
 A computer in game that can launch the game recursively. Tail-return-optimization? 
+Player can skip a level if they don't want to spoil the song's feelings. Not because of difficulty! 
+
+More ideas at mindExt.git/master/sci_fi_ideas.txt
