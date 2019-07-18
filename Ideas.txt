@@ -12,5 +12,7 @@ Use tranlsation API twice to paraphrase user input. Fake AI.
 7 beats per measure: nipaiyiwopaiyi
 A computer in game that can launch the game recursively. Tail-return-optimization? 
 Player can skip a level if they don't want to spoil the song's feelings. Not because of difficulty! 
+Meets a computer, dialog box describes desktop: same files as the player... Maybe smart algorithm to detect most iconic files on the desktop. 
+Song list: Netease/DianNaDe
 
 More ideas at mindExt.git/master/sci_fi_ideas.txt
