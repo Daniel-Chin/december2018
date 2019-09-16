@@ -14,6 +14,7 @@ A computer in game that can launch the game recursively. Tail-return-optimizatio
 Player can skip a level if they don't want to spoil the song's feelings. Not because of difficulty! 
 Meets a computer, dialog box describes desktop: same files as the player... Maybe smart algorithm to detect most iconic files on the desktop. 
 Song list: Netease/DianNaDe
+Warning screen: "this game may appear to know you more than you expect. Although, we do not upload any of that, so no worry."
 "ะห"rotation generates one bar of 4/4 and one bar of tritones. 
 
 More ideas at mindExt.git/master/sci_fi_ideas.txt
